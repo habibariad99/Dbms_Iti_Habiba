@@ -1,9 +1,29 @@
 #! /usr/bin/bash 
 
+echo "welcome to our database engine ! "
 
-PS3= "Please select the database operation: "
+echo "which operation do you want to select ?"
 
-select choice in createDB listDB dropDB connectDB
+
+
+select choice in createDB listDB connectDB dropDB
+
 do 
-   case $choice in 
+ case $choice in 
      
+     "createDB" ) . ./createDB.sh ;;
+
+
+     "listDB") . ./listDB.sh ;;
+     
+
+     "connectDB" ) . ./connectDB.sh ;;
+     
+
+     "dropDB") . ./dropDB.sh ;;
+
+
+
+     esac
+
+done
