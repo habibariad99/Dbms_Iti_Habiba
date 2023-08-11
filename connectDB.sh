@@ -2,11 +2,10 @@
 
 read -p "enter the data base you want to connect to " connectDB 
 
-cd databases 
+
 
 if [[ -d $connectDB ]] ; then 
-   
-    cd databases/$connectDB 
+    cd $connectDB 
      
      echo "you are now connected to the database "
 
@@ -19,22 +18,22 @@ if [[ -d $connectDB ]] ; then
      do 
      case $cmd in 
      
-     "createTable")   . ../createTable.sh;; 
+     "createTable")   . ../../createTable.sh;; 
 
 
-     "deleteTable") . ../deleteTable.sh ;;
+     "deleteTable") . ../../deleteTable.sh ;;
      
 
-     "dropTable" ) . ../dropTable.sh ;;
+     "dropTable" ) . ../../dropTable.sh ;;
      
 
-     "insertTable") . ../insertTable.sh ;;
+     "insertTable") . ../../insertTable.sh ;;
 
-     "updateTable") . ../updateTable.sh ;;
+     "updateTable") . ../../updateTable.sh ;;
 
-     "selectFromTable") . ../selectFromTable.sh ;; 
+     "selectFromTable") . ../../selectFromTable.sh ;; 
 
-     "deleteFromTable") . ../deleteFromTable.sh ;;
+     "deleteFromTable") . ../../deleteFromTable.sh ;;
      esac
      done
      else 

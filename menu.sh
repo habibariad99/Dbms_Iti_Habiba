@@ -12,18 +12,16 @@ read -p "Enter your choice " cmd
  
    case $cmd in 
    
-       1)
-           . ./createDB.sh ;;
-            
-        2)
-            ./listDB.sh;;
-       3)
-            ./dropDB.sh;;
-
-       
+       1) . ./createDB.sh ;;
            
-     
             
+       2) . ./listDB.sh;;
+            
+       3) . ./dropDB.sh;;
+
+       4) . ./connectDB.sh ;;
+          
+      
      esac
 done 
       

@@ -4,11 +4,12 @@ echo "hello here we are one step closer to create your DB "
 
 read -p "what is your database name :" dbname 
 
-cd databases 
+
+
 if [[ $dbname =~ ^[a-zA-Z0-9]+$ ]]
 then
 
-  if [[ -f  $dbname ]] ;then 
+  if [[ -d  $dbname ]] ;then 
    
      echo "It seems that this file already exists ! "
   else

@@ -1,8 +1,8 @@
 #! /usr/bin/bash 
 
-read -p "please enter your table name " tablename 
+read -p "please enter your table name " tablename  
 
-#loop on flag  ( de lesa m3mlthash)
+
 #check on regex (special character) w  eno md5lsh haga fadya 
 if [[ $tablename =~ ^[a-zA-Z0-9]+$ ]]
   then
@@ -11,39 +11,77 @@ if [[ $tablename =~ ^[a-zA-Z0-9]+$ ]]
   then
   echo "this table already exists "
   cd ..
-  ./connectDB
+  ../../connectDB
   else 
 # i will create table files  
   touch ./$tablename
-  touch ./metadata$tablename
+  touch ./$tablename-metadata
   echo "table files are created successfully " 
   fi
 
 #ba5od esm column 
 #datatype bta3 
-#primary key 
+#primary key  
+i=0 
 
-read -p "please enter how many columns do you need in your table" nocol 
+ read -p " please enter number of columns you want to add to your table :" noofColumns 
 
-for i in $nocol 
-do 
+while [[ $i -le $noofColumns ]];do  
 
-read -p " column name : " colname 
-echo -n colname > metadata$tablename
+ read -p "please enter column name " columnName 
 
-read -p " column data type :" coldatatype 
-echo -n  coldatatype > metadata$tablename
+ if [[ $columnName =~ ^[a-zA-Z0-9]+$ ]] 
+  then 
+     echo $columnName":" >> ${tablename}-metadata
+    echo  "please mention column data type"
+     select columndatatype in "string" "integer"
+     do 
+     case $columndatatype  in 
+        
+        "string" ) 
+          echo $columndatatype":" >> ${tablename}-metadata 
+           break;;
+        
+        "Integer" ) 
+          echo $columndatatype":" >> ${tablename}-metadata 
+          break;;
+        
+         *)
+          echo "Please Choose number from the list"
+          ;;
 
-read -p "do you want it to be your primary key (yes/no):" pk
-echo pk > metadata$tablename
- 
+      esac
+       done
+       echo  "please mention do you want the column to be primary key or not "
+     select pkey in "Yes" "No"
+     do 
+     case $pkey  in 
+        
+        "Yes" ) 
+          echo $pkey"pkey:yes" >> ${tablename}-metadata
+          break ;;
+        
+        "No" ) 
+          echo $pkey":no" >> ${tablename}-metadata 
+          break
+          ;;
+        
+         *)
+          echo "Please Choose number from the list"
+          ;;
+      
+      esac
 
+      
+      done
+      
+    
+      
+   else
+      echo " column name can not include special characters "
+ fi
 done 
-else 
+
+else
 echo "using special character in table name is not allowed !"
 fi
-
-
-#read -p 
-#echo -n 
-    
