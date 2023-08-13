@@ -21,7 +21,7 @@ then
   fi 
 
 else
-    echo " using special characters is not allowed " 
+    echo " using special characters is not allowed  " 
 
 fi
       
